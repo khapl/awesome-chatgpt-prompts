@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Batting Challenge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏏 Cricket Batting Challenge</h1>
+            <p class="subtitle">Score as many runs as you can in 20 overs!</p>
+        </header>
+
+        <div class="game-screen" id="gameScreen">
+            <!-- Scoreboard -->
+            <div class="scoreboard">
+                <div class="score-item">
+                    <div class="score-label">Score</div>
+                    <div class="score-value" id="score">0/0</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Balls</div>
+                    <div class="score-value" id="balls">0/120</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Target</div>
+                    <div class="score-value" id="target">150</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Run Rate</div>
+                    <div class="score-value" id="runRate">0.00</div>
+                </div>
+            </div>
+
+            <!-- Cricket Ground -->
+            <div class="ground">
+                <div class="pitch">
+                    <div class="bowler" id="bowler">🎳</div>
+                    <div class="ball" id="ball"></div>
+                    <div class="batsman" id="batsman">🏏</div>
+                </div>
+                <div class="commentary" id="commentary">
+                    Welcome to the match! Choose your shot to start batting.
+                </div>
+            </div>
+
+            <!-- Shot Selection -->
+            <div class="controls">
+                <h3>Select Your Shot:</h3>
+                <div class="shot-buttons">
+                    <button class="shot-btn defend" onclick="playShot('defend')">
+                        <span class="shot-name">Defend</span>
+                        <span class="shot-desc">Safe • 0 runs</span>
+                    </button>
+                    <button class="shot-btn single" onclick="playShot('single')">
+                        <span class="shot-name">Single</span>
+                        <span class="shot-desc">Rotate • 1-2 runs</span>
+                    </button>
+                    <button class="shot-btn boundary" onclick="playShot('boundary')">
+                        <span class="shot-name">Boundary</span>
+                        <span class="shot-desc">Risky • 4 runs</span>
+                    </button>
+                    <button class="shot-btn six" onclick="playShot('six')">
+                        <span class="shot-name">Six</span>
+                        <span class="shot-desc">Very Risky • 6 runs</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Last 6 Balls -->
+            <div class="over-display">
+                <h4>This Over:</h4>
+                <div class="balls-display" id="ballsDisplay"></div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div class="game-over" id="gameOver" style="display: none;">
+            <div class="result-card">
+                <h2 id="resultTitle">Match Result</h2>
+                <div class="final-score" id="finalScore"></div>
+                <div class="stats" id="stats"></div>
+                <button class="restart-btn" onclick="restartGame()">Play Again</button>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div class="start-screen" id="startScreen">
+            <h2>Welcome to Cricket Batting Challenge!</h2>
+            <div class="instructions">
+                <h3>How to Play:</h3>
+                <ul>
+                    <li>🏏 You have 20 overs (120 balls) to score runs</li>
+                    <li>🎯 Try to beat the target of 150 runs</li>
+                    <li>🛡️ <strong>Defend:</strong> Safe shot, no runs but no risk</li>
+                    <li>🏃 <strong>Single:</strong> Low risk, 1-2 runs</li>
+                    <li>⚡ <strong>Boundary:</strong> Medium risk, 4 runs</li>
+                    <li>🚀 <strong>Six:</strong> High risk, 6 runs</li>
+                    <li>⚠️ You have 10 wickets - don't lose them all!</li>
+                    <li>💡 Aggressive shots have higher wicket chances</li>
+                </ul>
+            </div>
+            <button class="start-btn" onclick="startGame()">Start Match</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
